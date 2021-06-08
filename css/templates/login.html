@@ -1,0 +1,31 @@
+{% load static %}
+<style>
+    #d {  width: 600px; height: 110px; background: ; }
+    #d1 { float: left; width: 250px; height: 60px; text-align: right;
+          margin: 50px 10px 20px 0px; background: ; }
+    #d2 { float: right; width: 330px; height: 60px; text-align: left;
+          margin: 50px 0px 20px 10px; background: ; }
+    #button { display: inline; margin-left: 220px; background: ; }
+
+</style>
+
+<section>
+    <div id="d">
+        <div id="d1">   <!--div: block 속성-->
+            ID<br><br>
+            PASSWORD<br>
+        </div>
+        <div id="d2">
+            <form>
+                <input type="text" name="id"><br><br>
+                <input type="password" name="pwd"><br>
+            </form>
+        </div>
+    </div>
+    <div id="button">
+        <format>
+            <input type="submit" value="LOGIN">
+            <input type="reset" value="RESET">
+        </format>
+    </div>
+</section>

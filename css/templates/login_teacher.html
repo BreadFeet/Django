@@ -1,0 +1,11 @@
+<!--login.html의 강사님 버전-->
+<section>
+  <h1>Login Page</h1>
+  <form action="{% url 'loginimpl' %}" method="post">     <!--submit해서 넘어가는 페이지 설정하기-->
+                                                          <!--method="get"하면 입력내용이 url창에 다 뜸!-->
+    {% csrf_token %}      <!--csrf 공격에 대한 방어책-->
+    ID <input type="text" name="id"><br>
+    PASSWORD <input type="password" name="pwd"><br>
+    <input type="submit" value="LOGIN">
+  </form>
+</section>

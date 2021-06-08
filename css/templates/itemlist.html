@@ -1,0 +1,27 @@
+<style>
+  section > table {
+    width: 300px;
+    border: 2px solid yellow;
+    text-align: center;
+  }
+</style>
+
+
+
+<section>
+  <h3>Item List</h3>
+
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      {% for l in list %}       <!--form action에서처럼 url 주소로도 링크 만들 수 있음-->
+      <tr><td><a href="itemdtl?id={{l.getId}}">{{l.getName}}</a></td><td>{{l.getPrice}}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<!--여기까지는 views.py에서 ItemVO를 import한 적이 없었으므로 -->
+<!-- 추가해줘야 작동할거라고 생각했는데 아니네????????????-->

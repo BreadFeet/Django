@@ -1,0 +1,31 @@
+{% load static %}
+<style>
+    .parent { display: flex; width: 600px; background: ; }
+    .first { flex: 1; width: 100px; margin-top: 50px; text-align: right; background: ; }
+    .second { flex: 1.5; width: 300px; margin-left: 10px; margin-top: 50px; text-align: left; background: ; }
+    .nei { text-align: center; margin-top: 20px; background: ; }
+</style>
+
+<section>
+    <div class="parent">
+        <div class="first">
+            ID<br><br>
+            PASSWORD<br><br>
+            NAME<br>
+        </div>
+        <div class="second">
+        <form>
+            <input type="text" name="id"><br><br>
+            <input type="password" name="pwd"><br><br>
+            <input type="text" name="name"><br>
+        </form>
+        </div>
+    </div>
+    <div class="nei">
+        <format>
+            <input type="submit" value="SUBMIT">
+            <input type="reset" value="RESET">
+        </format>
+    </div>
+
+</section>
