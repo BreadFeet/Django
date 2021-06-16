@@ -18,7 +18,8 @@ def home(request):
 
 def login(request):
     context = {
-        'section': 'login_teacher.html'
+        # 'section': 'login.html'               # 내 버전
+        'section': 'login_teacher.html'         # 강사님 버전
     }
     return render(request, 'base.html', context)
 
@@ -33,22 +34,26 @@ def loginimpl(request):    # request는 url 쿼리인가????????????????????????
     context = {}
     try:
         user_s = udb.select(id)       # 불러온 user_s는 UserVO 객체임!!
-        print(user_s)
+        print(request.session, request.session.session_key)    # 처음에 object, None 출력
         if pwd == user_s.getPwd():    # id, pwd가 모두 맞는 경우
-            # session에 사용자 정보를 넣는다
+            # session 활성화: session에 사용자 정보를 넣는다
             request.session['sessionid'] = id
+            request.session['hello'] = 'world'
+            print(request.session.session_key)                 # 여전히 None이 찍히지만, 해당 작업이 끝나는 순간 session ID를 얻을 수 있음
             # section에 loginok.html 화면을 넣는다
             context['section'] = 'loginok.html'
             context['logid'] = user_s       # 이후 출력페이지에서 id, pwd, name값 사용하기 위해서 VO객체로 받음
-        else:                    # id는 존재하지만, pwd가 틀린 경우 오류 발생
-            raise Exception("비번 오류********", "비번망했슈.......:/")
+
+        else:                         # id는 존재하지만, pwd가 틀린 경우 오류 발생
+            raise Exception("비번 오류********")
                   # error 이름은 IndexError, NameError 등 내장 에러 아무거나 가능!!
+
     except Exception as msg:                # id가 db에 없으면 sql 반환값 없음 -> UserVO에 넣을게 없어서 오류남!!
         # section에 loginfail.html 화면을 넣는다
         context['section'] = 'loginfail.html'
-        print(msg.args[1])
+        print(msg)
         # Exception은 모든 오류상황을 말하는 것이라, id가 없는 경우에도 except가 실행된다!!!
-        # -> 다만 설정된 msg가 없기 때문에 출력되는 내용은 없음
+        # -> 다만 설정된 msg가 없어서 출력은 안됨
 
     return render(request, 'base.html', context)
 
@@ -61,7 +66,6 @@ def loginimpl(request):    # request는 url 쿼리인가????????????????????????
     #     context['section'] = 'loginok.html'       # 사전 기능 활용!
     #     context['logid'] = 'qq'
     #     # centerpage = 'loginok.html'
-    #     id = 'qq'
     #
     # else:
     #     context['section'] = 'loginfail.html'
@@ -71,7 +75,7 @@ def loginimpl(request):    # request는 url 쿼리인가????????????????????????
     # 4. 로그인 실패 처리
     # context = {
     #     'section': centerpage,
-    #     'lid': id,
+    #     'logid': id,
     # }
     # return render(request, 'base.html', context)
 
@@ -137,15 +141,17 @@ def ajax(request):
 
 
 def userli(request):
+    print(request.session.session_key)
     # selecAll로 모든 유저정보 가져온다
     allusers = udb.selectAll()
     for a in allusers:
         a
+
     # 가져온 정보를 section에 띄운다.
     context = {
-        'section': 'userlist.html',
+        'section': 'userlist_test.html',
         'list': allusers,
-        'l': a,
+        'l': a
     }
     return render(request, 'base.html', context)
 
@@ -164,6 +170,7 @@ def userdtl(request):
 
 
 def itemli(request):
+    print(request.session.session_key)
     allitems = idb.selectAll()
     context = {
         'section': 'itemlist.html',
@@ -182,6 +189,7 @@ def itemdtl(a):                  # 장고가 자동으로 함수의 첫번째 �
 
 
 def additem(request):
+    print(request.session.session_key)
     context = {
         'section': 'additem.html'
     }

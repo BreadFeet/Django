@@ -7,20 +7,16 @@
   }
 </style>
 
-
 <section>
   <h3>User List</h3>
-
   <table>
     <thead>
       <tr><th>ID</th><th>NAME</th></tr>
     </thead>
     <tbody>
-      {% for l in list %}     <!--for loop이 views.py에서 반복하면 안되나? -> userlist_test.html 참조-->
-      <tr><td><a href="{% url 'userdetail' %}?id={{l.getId}}">{{l.getId}}</a></td><td> {{l.getName}}</td></tr>
-      {% endfor %}     <!--form-submit처럼 자동으로 id를 넣은 url을 만들어주지 않으므로, url request 형태로 직접 작성-->
+      {% for l in list %}      <!--for loop이 views.py에서 반복하면 안되나? -> userlist_test.html 참조-->
+      <tr><td><a href="{% url 'userdetail' %}?id={{l.getId}}">{{l.getId}}</a></td><td>{{l.getName}}</td></tr>
+      {% endfor %}       <!--form-submit처럼 자동으로 id를 넣은 url을 만들어주지 않으므로, url request 형태로 직접 작성-->
     </tbody>
   </table>
-
-
 </section>

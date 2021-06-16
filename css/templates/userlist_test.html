@@ -1,8 +1,46 @@
-<!--userlist.html의 for loop이 view.py에서 실행되면 어떻게 될까? -->
+<!--1. userlist.html의 for loop이 view.py에서 실행되면 어떻게 될까? -->
 
-<section>
-  <h3>User List For Loop 테스트하기 위한 페이지입니다.</h3>
-  {{l.getId}}, {{l.getName}}
-</section>
+<!--<section>-->
+<!--  <h3>User List For Loop 테스트하기 위한 페이지입니다.</h3>-->
+<!--  {{l.getId}}, {{l.getName}}-->
+<!--</section>-->
 
 <!--결론: for loop 돌면서 모든 l이 찍히는 것이 아니라, 마지막 l값만 찍힌다!!-->
+
+
+<!--2. view.py에서 for loop을 하되, for loop 마다 context rendering을 하면 되지 않을까?-->
+<section>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>NAME</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{{l.getId}}</td><td>{{l.getName}}</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!--결론: 첫번째 루프 결과만 찍히고 끝. 첫번째 rendering 이후 반복문이 끝나버림-->
+
+
+<!--3. view.py에서 for loop을 하되, 결과 한줄 한줄이 테이블에 추가되도록 자바스크립트로 설정한다면?-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<!--<script>-->
+<!--  $(document).ready(function() {-->
+<!--      $('tbody').append('<tr><td>{{l.getId}}</td><td>{{l.getName}}</td></tr>');-->
+<!--  });-->
+<!--</script>-->
+
+<!--<section>-->
+<!--  <h3>User List</h3>-->
+<!--  <table>-->
+<!--    <thead>-->
+<!--      <tr><th>ID</th><th>NAME</th></tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</section>-->
+
+<!--결론: 2번과 for loop 설정이 같아서, 첫번째 l 값만 전달되고 끝남-->

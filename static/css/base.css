@@ -21,16 +21,16 @@
         line-height: 60px
       }
 
-      #login { overflow: hidden; width: 600px; border-top: 2px solid purple; border-bottom: 1px solid pink; margin: 0px auto; }
-      #login > li { float: right; }    /* 리스트가 오른쪽에서 왼쪽으로 연결됨 - 역순됨! */
-      #login > li > a { display: block; width: 70px; padding: 6px 8px; text-align: center; font-size: 80%;
+      .login { overflow: hidden; width: 600px; border-top: 2px solid purple; border-bottom: 1px solid pink; margin: 0px auto; }
+      .login > li { float: right; }    /* 리스트가 오른쪽에서 왼쪽으로 연결됨 - 역순됨! */
+      .login > li > a { display: block; width: 70px; padding: 6px 8px; text-align: center; font-size: 80%;
                         background: red; color: white; }  /* block으로 해야 너비, 높이, 마진, 패딩을 지정할 수 있다 */
 
-      #menu { overflow: hidden; width: 600px; margin: 0 auto; }
-      #menu > li { float: left; }
-      #menu > li > a { text-align: center; width: 100px; display: block; padding: 10px 10px; font-size: 105%;
+      .menu { overflow: hidden; width: 600px; margin: 0 auto; }
+      .menu > li { float: left; }
+      .menu > li > a { text-align: center; width: 100px; display: block; padding: 10px 10px; font-size: 105%;
                        font-weight: bold; background: red; color: white; }
-      #menu > li > a:hover { background: blue; color:yellow; }
+      .menu > li > a:hover { background: blue; color:yellow; }
 
       section {
         width: 600px;
